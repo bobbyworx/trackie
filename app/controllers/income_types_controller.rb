@@ -26,8 +26,8 @@ class IncomeTypesController < ApplicationController
 
   def update
     income_type
-     if @income_type.update(params[:income_type].permit(:name))
-      redirect_to @income_type
+    if @income_type.update(params[:income_type].permit(:name, :parent_income_type_id))
+      redirect_to income_types_path
     else
       render 'edit'
     end
@@ -41,7 +41,7 @@ class IncomeTypesController < ApplicationController
   end
 
   def income_type_params
-    params.require(:income_type).permit(:name)
+    params.require(:income_type).permit(:name, :parent_income_type_id)
   end
 
   def income_type
@@ -53,8 +53,14 @@ class IncomeTypesController < ApplicationController
     #@parents = income_type.parent_income_type
   #end
 
-  #def to_s
-    #income_type.parent_income_type
-  #end
+  def to_s
+    @income_t = IncomeType.all
+    @income_t.parent_income_type.name
+  end
+
+  def parent_income_type
+        parent = IncomeType.find(id).name
+        parent
+    end
 
 end
