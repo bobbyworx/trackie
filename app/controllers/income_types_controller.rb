@@ -14,18 +14,18 @@ class IncomeTypesController < ApplicationController
   end
 
   def index
-    @income_type = IncomeType.all
+    @income_types = IncomeType.all
   end
 
   #def show
   #end
 
   def edit
-    @income_type = IncomeType.find(params[:id])
+    income_type
   end
 
   def update
-    @income_type = IncomeType.find(params[:id])
+    income_type
      if @income_type.update(params[:income_type])
       redirect_to @income_type
     else
@@ -33,7 +33,19 @@ class IncomeTypesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    income_type
+    income_type.destroy
+    redirect_to income_types_path, :notice => "Income type deleted!" 
+
   end
+
+  def income_type
+     @income_type ||= IncomeType.find(params[:id])
+  end
+
+  #def to_s
+    #income_type.parent_income_type
+  #end
 
 end

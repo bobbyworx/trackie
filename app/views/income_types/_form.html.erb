@@ -4,7 +4,7 @@
     <h2><%= pluralize(@income_type.errors.count, "error") %> prohibited
       this post from being saved:</h2>
     <ul>
-    <% @post.errors.full_messages.each do |msg| %>
+    <% @income_type.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
     </ul>
@@ -12,15 +12,15 @@
   <% end %>
 
   <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
   </p>
  
   <p>
-    <%= f.label :text %><br>
-    <%= f.text_area :text %>
+  <%= f.label :parent_income_type %><br />
+  <%= f.text_field :income_type.parent_income_type %>
   </p>
- 
+
   <p>
     <%= f.submit %>
   </p>

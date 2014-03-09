@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>Name </th>
+    <th>Parent</th>
+  </tr>
+  <% for income_type in @income_types %>
+    <tr>
+      <td><%=h income_type.name %></td>
+      <td><%=h income_type.parent_income_type %></td>
+       <td><%= link_to 'Destroy', income_type_path(income_type),
+                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  
+  <% end %>
+
+  </table></br>
