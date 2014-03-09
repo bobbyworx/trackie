@@ -17,8 +17,7 @@
   </p>
  
   <p>
-  <%= f.label :parent_income_type %><br />
-  <%= f.text_field :income_type.parent_income_type %>
+    <%= f.collection_select :parent_income_type_id, IncomeType.order(:name),:id,:name, include_blank: true %>
   </p>
 
   <p>

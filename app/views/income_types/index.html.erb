@@ -1,3 +1,4 @@
+<%= link_to "Create New Income Types", new_income_type_path(@income_type) %>
 <table>
   <tr>
     <th>Name </th>
@@ -7,6 +8,7 @@
     <tr>
       <td><%=h income_type.name %></td>
       <td><%=h income_type.parent_income_type %></td>
+      <td><%= link_to 'Edit', edit_income_type_path(income_type) %></td>
        <td><%= link_to 'Destroy', income_type_path(income_type),
                     method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
