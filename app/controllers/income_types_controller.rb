@@ -14,7 +14,7 @@ class IncomeTypesController < ApplicationController
   end
 
   def index
-    @income_types = IncomeType.all
+    @income_types = IncomeType.paginate :per_page => 5, :page => params[:page]
   end
 
   #def show
