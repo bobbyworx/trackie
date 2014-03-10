@@ -4,10 +4,8 @@ body
 {
  padding-top: 20px;
 }
-
-h1 
-{
- text-align: center;
+ h1 {
+	text-align: center;
 }
 @import "twitter/bootstrap/responsive";
 
