@@ -1,19 +1,37 @@
-<%= link_to "Create New Income Types", new_income_type_path(@income_type) %>
-<table>
-  <tr>
-    <th>Name </th>
-    <th>Parent</th>
-  </tr>
-  <% for income_type in @income_types %>
-    <tr>
-      <td><%=h income_type.name %></td>
-      <td><%=h income_type.parent_income_type.name if income_type.parent_income_type%></td>
-      <td><%= link_to 'Edit', edit_income_type_path(income_type) %></td>
-      <td><%= link_to 'Destroy', income_type_path(income_type),
-                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  
-  <% end %>
+<%- model_class = IncomeType -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
 
-  </table></br>
-        <%= will_paginate @income_types %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_income_type_path,
+            :class => 'btn btn-primary' %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:parent_income_type_id) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @income_types.each do |income_type| %>
+      <tr>
+        <td><%= income_type.name %></td>
+        <td><%= income_type.parent_income_type.name if income_type.parent_income_type %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_income_type_path(income_type), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      income_type_path(income_type),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+ <%= will_paginate @income_types %>
+
