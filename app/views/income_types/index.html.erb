@@ -1,4 +1,3 @@
-<%- model_class = IncomeType -%>
 <div class="page-header">
   <h1><%=t "Income Types" %></h1>
 </div>
@@ -10,8 +9,8 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:parent_income_type_id) %></th>
+      <th><%= IncomeType.human_attribute_name(:name) %></th>
+      <th><%= IncomeType.human_attribute_name(:parent_income_type_id) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -19,7 +18,7 @@
     <% @income_types.each do |income_type| %>
       <tr>
         <td><%= income_type.name %></td>
-        <td><%= income_type.parent_income_type.name if income_type.parent_income_type %></td>
+        <td><%= income_type.parent_income_type.try(:name) %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_income_type_path(income_type), :class => 'btn btn-mini' %>

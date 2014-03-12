@@ -8,7 +8,7 @@
   <div class="control-group">
     <%= f.label :parent_income_type_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.collection_select :parent_income_type_id, IncomeType.where("parent_income_type_id is null"), :id, :name, include_blank: true %>
+      <%= f.collection_select :parent_income_type_id, nil_parent_income_type, :id, :name, include_blank: true %>
     </div>
   </div>
 

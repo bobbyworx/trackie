@@ -1,4 +1,5 @@
 class IncomeTypesController < ApplicationController
+  helper_method :nil_parent_income_type
   
   def new
     @income_type = IncomeType.new
@@ -14,7 +15,7 @@ class IncomeTypesController < ApplicationController
   end
 
   def index
-    @income_types = IncomeType.all.page(params[:page]).per(5)#paginate :per_page => 5, :page => params[:page]
+    @income_types = IncomeType.page(params[:page]).per(5)#paginate :per_page => 5, :page => params[:page]
   end
 
   #def show
@@ -48,9 +49,9 @@ class IncomeTypesController < ApplicationController
      @income_type ||= IncomeType.find(params[:id])
   end
 
-  #def parent_income_type
-       #@unassigned_parrent = IncomeType.where("parent_income_type_id is null").name
-  #end
+  def nil_parent_income_type
+      @unassigned_parrent = IncomeType.where(parent_income_type_id: nil)
+  end
 
 
 end
