@@ -26,7 +26,7 @@ class IncomeTypesController < ApplicationController
 
   def update
     income_type
-    if @income_type.update(params[:income_type].permit(:name, :parent_income_type_id))
+    if @income_type.update(income_type_params)
       redirect_to income_types_path
     else
       render 'edit'
@@ -48,14 +48,9 @@ class IncomeTypesController < ApplicationController
      @income_type ||= IncomeType.find(params[:id])
   end
 
-  #def parents
-    #income_type
-    #@parents = income_type.parent_income_type
+  #def parent_income_type
+       #@unassigned_parrent = IncomeType.where("parent_income_type_id is null").name
   #end
-
-  def parent_income_type
-       @unassigned_parrent = IncomeType.where("parent_income_type_id is null").name
-  end
 
 
 end
