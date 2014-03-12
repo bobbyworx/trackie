@@ -1,9 +1,9 @@
 <%- model_class = IncomeType -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%=t '.title' %></h1>
 </div>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to t('.new', :default => t("helpers.links.Create New Income Type")),
             new_income_type_path,
             :class => 'btn btn-primary' %>
 
@@ -33,5 +33,5 @@
     <% end %>
   </tbody>
 </table>
- <%= will_paginate @income_types %>
+<%= paginate @income_types %>
 
