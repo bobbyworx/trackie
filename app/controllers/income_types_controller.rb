@@ -1,6 +1,6 @@
 class IncomeTypesController < ApplicationController
   helper_method :nil_parent_income_type
-  
+
   def new
     @income_type = IncomeType.new
   end
@@ -8,7 +8,8 @@ class IncomeTypesController < ApplicationController
   def create
     @income_type = IncomeType.new(income_type_params)
     if @income_type.save
-      redirect_to action: 'index', notice: "You have successfully created an income type!"
+      flash[:notice] = "You have successfully created an income type!"
+      redirect_to action: 'index' 
     else
       render 'new'
     end
@@ -37,7 +38,8 @@ class IncomeTypesController < ApplicationController
   def destroy
     income_type
     income_type.destroy
-    redirect_to income_types_path, :notice => "Income type deleted!" 
+    flash[:notice] = "You have successfully deleted this income type."
+    redirect_to income_types_path 
 
   end
 

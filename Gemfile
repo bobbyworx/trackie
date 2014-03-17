@@ -16,7 +16,9 @@ gem 'therubyracer'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 gem 'less-rails'
+
 gem 'twitter-bootstrap-rails'
+
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes

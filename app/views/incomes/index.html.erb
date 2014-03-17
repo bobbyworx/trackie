@@ -1,0 +1,22 @@
+<table class="table table-striped">
+  <tr>
+    <th>Income Type </th>
+    <th>Amount</th>
+    <th>Note</th>
+  </tr>
+  <% for income in @incomes %>
+    <tr>
+      <td><%= income.income_type.name %></td>
+      <td><%=h income.amount %></td>
+      <td><%=h income.note %></td>
+      <!--<td><%= link_to 'Edit', edit_income_path(income) %></td>
+      <td><%= link_to 'Destroy', income_path(income),
+                    method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>-->
+      <%= paginate @incomes %>
+  
+  <% end %>
+  </table></br>
+
+<%= link_to 'New Income', new_income_path %>
+</div>

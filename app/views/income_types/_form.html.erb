@@ -1,10 +1,25 @@
+<%= form_for :income_type, url: income_types_path do |f| %>
+  <% if @income_type.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@income_type.errors.count, "error") %> prohibited
+      this post from being saved:</h2>
+    <ul>
+    <% @income_type.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
 <%= form_for @income_type, :html => { :class => 'form-horizontal' } do |f| %>
+
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :name, :class => 'text_field' %>
     </div>
   </div>
+
   <div class="control-group">
     <%= f.label :parent_income_type_id, :class => 'control-label' %>
     <div class="controls">
@@ -17,4 +32,5 @@
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 income_types_path, :class => 'btn' %>
   </div>
+<% end %>
 <% end %>

@@ -11,15 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140308155921) do
+ActiveRecord::Schema.define(version: 20140317114926) do
 
   create_table "income_types", force: true do |t|
     t.string   "name"
     t.integer  "parent_income_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "income_id"
   end
 
+  add_index "income_types", ["income_id"], name: "index_income_types_on_income_id"
   add_index "income_types", ["parent_income_type_id"], name: "index_income_types_on_parent_income_type_id"
+
+  create_table "incomes", force: true do |t|
+    t.integer  "amount"
+    t.text     "note"
+    t.integer  "income_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "incomes", ["income_type_id"], name: "index_incomes_on_income_type_id"
 
 end

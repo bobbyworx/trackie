@@ -2,9 +2,7 @@
   <h1><%=t "Income Types" %></h1>
 </div>
 
-<%= link_to t('.new', :default => t("helpers.links.Create New Income Type")),
-            new_income_type_path,
-            :class => 'btn btn-primary' %>
+<%= link_to "Create New Income Type", new_income_type_path, :class => 'btn btn-primary' %>
 
 <table class="table table-striped">
   <thead>
@@ -22,12 +20,15 @@
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_income_type_path(income_type), :class => 'btn btn-mini' %>
-                  
+
+            <% unless income_type.parent_income_type.nil? %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       income_type_path(income_type),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
+            <% end %>
+
         </td>
       </tr>
     <% end %>
