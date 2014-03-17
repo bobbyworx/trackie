@@ -1,0 +1,34 @@
+<%= form_for :income, url: incomes_path do |f| %>
+  <% if @income.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@income.errors.count, "error") %> prohibited
+      this post from being saved:</h2>
+    <ul>
+    <% @income.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <p>
+  <%= f.label :income_type_id %>
+  <%= f.collection_select :income_type_id, IncomeType.order(:name), :id, :name, include_blank: true %>
+  </p>
+
+  <p>
+    <%= f.label :amount %><br>
+    <%= f.number_field :amount %>
+  </p>
+ 
+  <p>
+    <%= f.label :note %><br>
+    <%= f.text_area :note %>
+  </p>
+ 
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                incomes_path, :class => 'btn' %>
+  </div>
+<% end %>
