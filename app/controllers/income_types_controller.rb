@@ -39,7 +39,10 @@ class IncomeTypesController < ApplicationController
     income_type
     income_type.destroy
     flash[:notice] = "You have successfully deleted this income type."
-    redirect_to income_types_path 
+    respond_to do |format|
+      format.html { redirect_to income_types_path }
+      format.js
+    end
 
   end
 

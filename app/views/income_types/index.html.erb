@@ -22,11 +22,10 @@
                       edit_income_type_path(income_type), :class => 'btn btn-mini' %>
 
             <% unless income_type.parent_income_type.nil? %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      income_type_path(income_type),
-                      :method => :delete,
-                      :data => { :confirm => 'Press ok to Delete?' },
-                      :class => 'btn btn-mini btn-danger' %>
+          <%= link_to 'Destroy', income_type_path(income_type),
+               method: :delete,
+               data: { confirm: 'Are you sure?' },
+                :class => 'btn btn-mini btn-danger' %>
             <% end %>
 
         </td>

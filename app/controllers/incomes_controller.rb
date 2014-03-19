@@ -1,13 +1,13 @@
 class IncomesController < ApplicationController
 
-#helper_method :income
+  helper_method :income
 
 def new
   @income = Income.new
 end
 
 def create
-  @income_type = IncomeType.find(params[:income_type_id])
+  @income_type = IncomeType.find(params[:income][:income_type_id])
   @income = @income_type.incomes.create(resource_params)
   if @income.save
     flash[:notice] = "You added #{@income.amount} to your #{@income.income_type.name} this month!"
@@ -29,9 +29,8 @@ def index
 end
 
 def destroy
-    @income_type = IncomeType.find(params[:income_type_id])
-    @income = @income_type.incomes.find(params[:id])
-    @income.delete
+    income = Income.find(params[:id])
+    income.destroy
     redirect_to incomes_path
 end
 

@@ -1,0 +1,4 @@
+$("#delete_income_type").before('<div id="flash_notice"><%= escape_javascript(flash.delete(:notice)) %></div>');
+$("#income_types_count").html("<%= pluralize(@income_type.income_types.count, 'IncomeType') %>");
+
+$("#income_types").append("<%= escape_javascript(render(:partial => @income_type)) %>");
