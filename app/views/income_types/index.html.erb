@@ -21,11 +21,15 @@
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_income_type_path(income_type), :class => 'btn btn-mini' %>
 
-            <% unless income_type.parent_income_type.nil? %>
-          <%= link_to 'Destroy', income_type_path(income_type),
-               method: :delete,
-               data: { confirm: 'Are you sure?' },
-                :class => 'btn btn-mini btn-danger' %>
+            <% if income_type.parent_income_type %>
+              <%= link_to 'Delete', income_type_path(income_type),
+                   method: :delete,data: { confirm: 'Are you sure?' },
+                   :class => 'btn btn-mini btn-danger' %>
+            <% else %>
+              <%= link_to 'Delete', "javascript:void(0)", "data-original-title" => "Can't delete this while it has children", "data-placement" => "top", :rel => "nofollow",
+                   method: :delete,
+                   :class => 'btn btn-mini btn-danger', disabled: true %>
+
             <% end %>
 
         </td>

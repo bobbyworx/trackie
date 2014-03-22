@@ -1,4 +1,6 @@
 class IncomeTypesController < ApplicationController
+
+  respond_to :html, :json
   helper_method :nil_parent_income_type
 
   def new
@@ -39,6 +41,7 @@ class IncomeTypesController < ApplicationController
     income_type
     income_type.destroy
     flash[:notice] = "You have successfully deleted this income type."
+   
     respond_to do |format|
       format.html { redirect_to income_types_path }
       format.js

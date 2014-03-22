@@ -18,10 +18,8 @@ ActiveRecord::Schema.define(version: 20140317114926) do
     t.integer  "parent_income_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "income_id"
   end
 
-  add_index "income_types", ["income_id"], name: "index_income_types_on_income_id"
   add_index "income_types", ["parent_income_type_id"], name: "index_income_types_on_parent_income_type_id"
 
   create_table "incomes", force: true do |t|

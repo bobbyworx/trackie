@@ -18,6 +18,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'less-rails'
 
 gem 'twitter-bootstrap-rails'
+gem "select2-rails"
 
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'

@@ -1,19 +1,9 @@
 <%= form_for :income, url: incomes_path do |f| %>
-  <% if @income.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@income.errors.count, "error") %> prohibited
-      this post from being saved:</h2>
-    <ul>
-    <% @income.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-  <% end %>
+
 
   <p>
   <%= f.label :income_type_id %>
-  <%= f.collection_select :income_type_id, IncomeType.all, :id, :name, include_blank: true %>
+  <%= f.grouped_collection_select :income_type_id, IncomeType.order(:name), :child_income_types, :name, :id, :name, include_blank: true %>
   </p>
 
   <p>
@@ -29,6 +19,6 @@
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                incomes_path, :class => 'btn' %>
+               incomes_path, :class => 'btn' %>
   </div>
 <% end %>

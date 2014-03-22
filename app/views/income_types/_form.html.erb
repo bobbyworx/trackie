@@ -1,4 +1,5 @@
 <%= form_for :income_type, url: income_types_path do |f| %>
+  
   <% if @income_type.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@income_type.errors.count, "error") %> prohibited

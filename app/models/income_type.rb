@@ -6,5 +6,6 @@ class IncomeType < ActiveRecord::Base
   belongs_to :parent_income_type, :class_name => "IncomeType"
 
   has_many :incomes
+
  
 end

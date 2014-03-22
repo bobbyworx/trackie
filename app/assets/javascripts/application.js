@@ -15,18 +15,5 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
-jQuery.ajaxSetup({ 
-  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
-})
+//= require select2
 
-jQuery.fn.submitWithAjax = function() {
-  this.submit(function() {
-    $.delete(this.action, $(this).serialize(), null, "script");
-    return false;
-  })
-  return this;
-};
-
-$(document).ready(function() {
-  $("#delete_income_type").submitWithAjax();
-})

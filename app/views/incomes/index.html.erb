@@ -10,7 +10,7 @@
   
   <% for income in @incomes %>
     <tr>
-      <td><%= income.income_type.name %></td>
+      <td><%= income.income_type.try(:name) %></td>
       <td><%=h income.amount %></td>
       <td><%=h income.note %></td>
       <td><%= link_to t('.edit', :default => t("helpers.links.edit")),
