@@ -1,6 +1,5 @@
 class IncomeTypesController < ApplicationController
 
-  respond_to :html, :json
   helper_method :nil_parent_income_type
 
   def new
@@ -31,7 +30,7 @@ class IncomeTypesController < ApplicationController
   def update
     income_type
     if @income_type.update(income_type_params)
-      redirect_to income_types_path
+      redirect_to root_path
     else
       render 'edit'
     end
@@ -40,13 +39,8 @@ class IncomeTypesController < ApplicationController
   def destroy
     income_type
     income_type.destroy
-    flash[:notice] = "You have successfully deleted this income type."
-   
-    respond_to do |format|
-      format.html { redirect_to income_types_path }
-      format.js
-    end
-
+    flash[:notice] = "You have successfully deleted #{income_type.name} income type."
+    redirect_to income_types_path
   end
 
   def income_type_params
@@ -56,6 +50,8 @@ class IncomeTypesController < ApplicationController
   def income_type
      @income_type ||= IncomeType.find(params[:id])
   end
+
+private
 
   def nil_parent_income_type
       @unassigned_parrent = IncomeType.where(parent_income_type_id: nil)

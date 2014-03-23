@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>TrackieApp</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "jquery", "application", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -29,9 +29,11 @@
   </div>
 </div>
   <div class="container">
-    
-    <%= notice %>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, raw(msg), :id => "flash_#{name}" %>
+    <% end %>
     <%= yield %>
+    <%= javascript_include_tag "jquery", "application", "data-turbolinks-track" => true %>
   </div>
 </body>
 </html>
