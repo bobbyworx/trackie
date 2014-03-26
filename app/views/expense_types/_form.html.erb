@@ -1,0 +1,30 @@
+<%= form_for @expense_type do |f| %>
+  
+  <% if @expense_type.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@expense_type.errors.count, "error") %> prohibited
+      this post from being saved:</h2>
+    <ul>
+    <% @expense_type.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+<%= form_for @expense_type, :html => { :class => 'form-horizontal' } do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+ 
+    <%= f.label :parent_expense_type_id %>
+    <%= f.collection_select :parent_expense_type_id, ExpenseType.order(:name), :id, :name, include_blank: true %>
+    
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                expense_types_path, :class => 'btn' %>
+  </div>
+<% end %>
+<% end %>
+

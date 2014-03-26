@@ -12,7 +12,7 @@ TrackieApp::Application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
      match 'versions/:id' => "versions#revert", as: :revert_version, via: [:get, :post]
   # Example resource route (maps HTTP verbs to controller actions automatically):
-
+resources :expense_types
   resources :income_types
     resources :incomes
     

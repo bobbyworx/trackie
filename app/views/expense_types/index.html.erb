@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h1><%=t "Expense Types" %></h1>
+</div>
+
+<%= link_to "Create New Expense Type", new_expense_type_path, :class => 'btn btn-primary' %>
+ <table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= ExpenseType.human_attribute_name(:name) %></th>
+      <th><%= ExpenseType.human_attribute_name(:parent_expense_type_id) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @expense_types.each do |expense_type| %>
+      <tr>
+        <td><%= expense_type.name %></td>
+        <td><%= expense_type.parent_expense_type.try(:name) || "None" %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_expense_type_path(expense_type), :class => 'btn btn-mini' %>
+
+            <% if expense_type.parent_expense_type %>
+              <%= link_to 'Delete', expense_type_path(expense_type),
+                   method: :delete,data: { confirm: 'Press Ok to Delete the Expense Type' + ' ' + expense_type.try(:name).to_s + '?' },
+                   :class => 'btn btn-mini btn-danger' %>
+            <% else %>
+              <%= link_to 'Delete', "javascript:void(0)", "data-original-title" => "Can't delete this while it has children", "data-placement" => "top", :rel => "nofollow",
+                   method: :delete,
+                   :class => 'btn btn-mini btn-danger', disabled: true %>
+
+            <% end %>
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @expense_types %>
+
