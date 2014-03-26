@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
+gem 'paper_trail', github: 'airblade/paper_trail'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
@@ -18,7 +20,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'less-rails'
 
 gem 'twitter-bootstrap-rails'
-gem "select2-rails"
+gem 'select2-rails'
 
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'

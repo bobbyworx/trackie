@@ -17,7 +17,7 @@ class IncomeTypesController < ApplicationController
   end
 
   def index
-    @income_types = IncomeType.page(params[:page]).per(5)#paginate :per_page => 5, :page => params[:page]
+    @income_types = IncomeType.page(params[:page]).per(5).order('created_at DESC')#paginate :per_page => 5, :page => params[:page]
   end
 
   #def show
@@ -54,7 +54,7 @@ class IncomeTypesController < ApplicationController
 private
 
   def nil_parent_income_type
-      @unassigned_parrent = IncomeType.where(parent_income_type_id: nil)
+      @unassigned_parrent = IncomeType.where(parent_income_type_id: nil).includes(:child_income_types)
   end
 
 

@@ -1,20 +1,15 @@
 <%= form_for @income do |f| %>
 
-
-  <p>
-  <%= f.label :income_type_id %>
-  <%= f.grouped_collection_select :income_type_id, IncomeType.order(:name), :child_income_types, :name, :id, :name, include_blank: true %>
-  </p>
-
-  <p>
+  <%= f.label :income_type_id, :class => 'control-label' %>
+<div class="controls" id="selection2">
+  <%= f.grouped_collection_select :income_type_id, IncomeType.order(:name), :extended, :name, :id, :name, include_blank: true %>
+</div>
     <%= f.label :amount %><br>
     <%= f.number_field :amount %>
-  </p>
  
-  <p>
+
     <%= f.label :note %><br>
     <%= f.text_area :note %>
-  </p>
  
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

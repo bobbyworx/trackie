@@ -7,5 +7,11 @@ class IncomeType < ActiveRecord::Base
 
   has_many :incomes
 
+def extended
+
+self.child_income_types.to_a << self
+#[self] << self.child_income_types.to_a
+
+end
  
 end

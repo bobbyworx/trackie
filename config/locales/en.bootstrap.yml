@@ -7,7 +7,7 @@ en:
     links:
       back: "Back"
       cancel: "Cancel"
-      confirm: "Press Ok to Delete?"
+      # confirm: "Press Ok to Delete?"
       destroy: "Delete"
       new: "New"
       edit: "Edit"
@@ -16,3 +16,4 @@ en:
       save: "Add New %{model}"
       new: "Create New %{model}"
       delete: "Delete %{model}"
+
