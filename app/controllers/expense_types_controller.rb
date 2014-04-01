@@ -28,7 +28,7 @@ class ExpenseTypesController < ApplicationController
   def update
     expense_type
     if @expense_type.update(expense_type_params)
-      flash[:notice] = "Expense Type #{expense_type.name} was saved!"
+      flash[:notice] = "Expense Type #{expense_type.name} was saved! #{undo_link} this!"
       redirect_to action: 'index' 
     else
       render 'edit'
@@ -38,7 +38,7 @@ class ExpenseTypesController < ApplicationController
   def destroy
     expense_type
     expense_type.destroy
-    flash[:notice] = "You have successfully deleted #{expense_type.name} expense type."
+    flash[:notice] = "You have successfully deleted #{expense_type.name} expense type. Press #{undo_link} to add it back!"
     redirect_to expense_types_path
   end
 
@@ -52,8 +52,8 @@ private
      @expense_type ||= ExpenseType.find(params[:id])
   end
 
-#def undo_link
-  #undo_link = view_context.link_to("undo", revert_version_path(@expense_type.versions.scoped.last, :method => :post))
-#end
+def undo_link
+  undo_link = view_context.link_to("undo", revert_version_path(@expense_type.versions.scoped.last, :method => :post))
+end
 
 end

@@ -1,18 +1,15 @@
-<%= form_for @income do |f| %>
+<%= simple_form_for @income do |f| %>
 
   <%= f.label :income_type_id, :class => 'control-label' %>
 <div class="controls" id="selection2">
   <%= f.grouped_collection_select :income_type_id, IncomeType.order(:name), :extended, :name, :id, :name, include_blank: true %>
 </div>
-    <%= f.label :amount %><br>
-    <%= f.number_field :amount %>
- 
+    <%= f.input :amount %><br> 
 
-    <%= f.label :note %><br>
-    <%= f.text_area :note %>
- 
+    <%= f.input :note %><br>
+
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= f.button :submit , :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                incomes_path, :class => 'btn' %>
   </div>
