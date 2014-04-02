@@ -15,6 +15,7 @@ TrackieApp::Application.routes.draw do
 resources :expense_types
   resources :income_types
     resources :incomes
+      resources :expenses
     
   # Example resource route with options:
   #   resources :products do

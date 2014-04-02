@@ -59,7 +59,7 @@ navigation.autogenerate_item_ids = false
     #
     primary.dom_class = "nav nav-pills nav-justified"
     primary.item :income, 'Incomes', incomes_path
-    primary.item :expense, 'Expenses', "#"
+    primary.item :expense, 'Expenses', expenses_path
     primary.item :report, 'Reports', "#"
 
     # Add an item which has a sub navigation (same params, but with block)
