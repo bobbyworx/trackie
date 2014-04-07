@@ -42,8 +42,13 @@ end
 def destroy
     @income = Income.find(params[:id])
     @income.destroy
-    flash[:notice] = "Income #{@income.amount.to_s} is deleted! Press #{undo_link} to add it back!"
-    redirect_to incomes_path
+    respond_to do |format|
+      format.html { redirect_to incomes_url }
+      format.json { head :no_content }
+      format.js   { render :nothing => true }
+    end
+    #flash[:notice] = "Income #{@income.amount.to_s} is deleted! Press #{undo_link} to add it back!"
+    #redirect_to incomes_path
 end
 
 private

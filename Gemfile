@@ -17,7 +17,7 @@ gem 'execjs'
 gem 'therubyracer'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
-gem 'less-rails'
+gem "less-rails-bootstrap", "2.3.3"
 
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'bootstrap3'
 gem 'select2-rails'

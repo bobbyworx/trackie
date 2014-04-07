@@ -22,10 +22,10 @@
 
             <% if income_type.parent_income_type %>
               <%= link_to 'Delete', income_type_path(income_type),
-                   method: :delete,data: { confirm: 'Press Ok to Delete the Income Type' + ' ' + income_type.try(:name).to_s + '?' },
+                   method: :delete, :remote => true,
                    :class => 'btn btn-mini btn-danger' %>
             <% else %>
-              <%= link_to 'Delete', "javascript:void(0)", "data-original-title" => "Can't delete this while it has children", "data-placement" => "top", :rel => "nofollow",
+              <%= link_to 'Delete', "javascript:void(0)", "data-original-title" => "Can't delete this while it has children", "data-placement" => "top",
                    method: :delete,
                    :class => 'btn btn-mini btn-danger', disabled: true %>
 

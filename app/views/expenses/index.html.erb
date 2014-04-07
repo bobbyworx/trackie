@@ -1,5 +1,5 @@
 <div class="well well-sm">
-    <%= "Total from beginning of the month: #{send(:total_income)}" %>
+    <%= "Total from beginning of the month: #{send(:total_expense)}" %>
 </div>
 
 <%= link_to "Create New Expense", new_expense_path, :class => 'btn btn-primary' %>
@@ -17,8 +17,8 @@
     <% for expense in @expenses %>
       <tr>
         <td><%= expense.expense_type.try(:name) %></td>
-        <td><%=h expense.amount %></td>
-        <td><%=h expense.note %></td>
+        <td><%= expense.amount %></td>
+        <td><%= expense.note %></td>
         <td><%= link_to t('.edit', :default => t("helpers.links.edit")),
                         edit_expense_path(expense), :class => 'btn btn-mini' %>
 

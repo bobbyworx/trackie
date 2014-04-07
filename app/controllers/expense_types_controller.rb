@@ -52,8 +52,8 @@ private
      @expense_type ||= ExpenseType.find(params[:id])
   end
 
-def undo_link
-  undo_link = view_context.link_to("undo", revert_version_path(@expense_type.versions.scoped.last, :method => :post))
-end
+  def undo_link
+    undo_link = view_context.link_to("undo", revert_version_path(@expense_type.versions.scoped.last, :method => :post))
+  end
 
 end

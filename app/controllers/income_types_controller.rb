@@ -1,5 +1,6 @@
 class IncomeTypesController < ApplicationController
 
+respond_to :html, :js
   helper_method :nil_parent_income_type
   helper_method :income_type_params
   def new
@@ -40,8 +41,12 @@ class IncomeTypesController < ApplicationController
   def destroy
     income_type
     income_type.destroy
-    flash[:notice] = "You have successfully deleted #{income_type.name} income type. Press #{undo_link} to add it back!"
-    redirect_to income_types_path
+    respond_to do |format|
+    format.html { redirect_to(income_types_path) }
+    format.js   { render :nothing => true }
+    #flash[:notice] = "You have successfully deleted #{income_type.name} income type. Press #{undo_link} to add it back!"
+    #redirect_to income_types_path
+   end
   end
 
   def income_type_params
@@ -59,7 +64,7 @@ private
   end
   
   def undo_link
-  undo_link = view_context.link_to("undo", revert_version_path(@income_type.versions.scoped.last, :method => :post))
+    undo_link = view_context.link_to("undo", revert_version_path(@income_type.versions.scoped.last, :method => :post))
   end
 
 end

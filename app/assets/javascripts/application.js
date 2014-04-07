@@ -17,3 +17,9 @@
 //= require select2
 //= require_tree .
 
+
+$(document).ready(function(){
+  $('.delete_income').bind('ajax:success', function() {  
+       $(this).closest('tr').fadeOut();
+}); 
+});

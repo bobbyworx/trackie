@@ -10,7 +10,7 @@ class IncomeType < ActiveRecord::Base
   has_paper_trail
 
 def name_different_from_parent
-    if self.name == self.parent_income_type.name
+    if self.name == self.parent_income_type.try(:name)
       errors.add(:income_type, "name has to be different from parent's name!")
     end
 end

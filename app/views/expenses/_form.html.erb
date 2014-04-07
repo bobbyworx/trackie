@@ -1,0 +1,16 @@
+<%= simple_form_for @expense do |f| %>
+
+  <%= f.label :expense_type_id, :class => 'control-label' %>
+<div class="controls" id="selection2">
+  <%= f.grouped_collection_select :expense_type_id, ExpenseType.order(:name), :extended, :name, :id, :name, include_blank: true %>
+</div>
+    <%= f.input :amount %><br> 
+
+    <%= f.input :note %><br>
+
+  <div class="form-actions">
+    <%= f.button :submit , :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("go back")),
+               expenses_path, :class => 'btn' %>
+  </div>
+<% end %>
