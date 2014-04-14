@@ -1,10 +1,10 @@
 <div class="page-header">
-  <h1> Welcome to Trackie, <span style="color:blue">User</span></h1>
-</div>
+    <h1> Welcome to Trackie, <%= link_to "#{current_user.username}", edit_user_registration_path %></span></h1>
+</div></br></br>
 
 <h2>
-<%= "What do you want to do today?" %></br></br>
-<p> Your last added income is: <span style="color:green"> <%= "#{Income.last.amount} RON " %> </span> in <%= "#{Income.last.income_type.try(:name)}" %> -
+<p><%= "What do you want to do today?" %></br></br></p>
+<p> Your last added income is: <span style="color:green"> <%= "#{Income.last.try(:amount)} RON " %> </span> in <%= "#{Income.last.try(:income_type).try(:name)}" %> -
   <%= link_to "add new", new_income_path %> Income </br></br></p>
 
 <p> Your last added expense is: <span style="color:red"> <%= "#{Expense.last.amount} RON " %></span> in <%= "#{Expense.last.expense_type.name}" %> -

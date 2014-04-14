@@ -68,6 +68,13 @@ navigation.autogenerate_item_ids = false
       sub_nav.item :expense_type, 'Expense Types', expense_types_path
     end
 
+    if current_user   
+      primary.item :user, "@#{current_user.username}", "#" do |sub_nav|
+          sub_nav.item :user, 'Logout', destroy_user_session_path
+          sub_nav.item :user, 'Change your password' , edit_user_registration_path
+      end
+    end
+
     # You can also specify a condition-proc that needs to be fullfilled to display an item.
     # Conditions are part of the options. They are evaluated in the context of the views,
     # thus you can use all the methods and vars you have available in the views.

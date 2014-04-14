@@ -18,9 +18,25 @@ TrackieApp::Application.configure do
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
-
+  config.action_mailer.delivery_method = :smtp
+  # change to true to allow email to be sent during development
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
   # Raise an error on page load if there are pending migrations
   config.active_record.migration_error = :page_load
+  config.action_mailer.default_url_options = { :host => 'http://bpopa.dev.dva:3000' }
+
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    #domain: "mail.google.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: "trackiedev@gmail.com",
+    password: "cevaparolarandom",
+    #:openssl_verify_mode  => 'none'
+  }
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large

@@ -19,7 +19,7 @@
 
 
 $(document).ready(function(){
-  $('.delete_income').bind('ajax:success', function() {  
+  $('.btn-danger').bind('ajax:success', function() {  
        $(this).closest('tr').fadeOut();
 }); 
 });

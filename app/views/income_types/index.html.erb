@@ -25,7 +25,7 @@
                    method: :delete, :remote => true,
                    :class => 'btn btn-mini btn-danger' %>
             <% else %>
-              <%= link_to 'Delete', "javascript:void(0)", "data-original-title" => "Can't delete this while it has children", "data-placement" => "top",
+              <%= link_to 'Delete', "javascript:void(0)", "data-original-title" => "Can't delete this while it has no parent", "data-placement" => "top",
                    method: :delete,
                    :class => 'btn btn-mini btn-danger', disabled: true %>
 

@@ -14,3 +14,19 @@
  *= require_self
  *= require_tree .
  */
+
+.border-form-div {
+  max-width: 300px;
+  padding: 19px 29px 29px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  }
+
+.border-form-div input[type="username"],
+.border-form-div input[type="password"] 
+{
+  font-size: 16px;
+  height: auto;
+  margin-bottom: 15px;
+  padding: 7px 9px;
+}
