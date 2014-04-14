@@ -42,11 +42,11 @@ respond_to :html, :js
     income_type
     income_type.destroy
     respond_to do |format|
-    format.html { redirect_to(income_types_path) }
-    format.js   { render :nothing => true }
+      format.html { redirect_to(income_types_path) }
+      format.js   { render :nothing => true }
     #flash[:notice] = "You have successfully deleted #{income_type.name} income type. Press #{undo_link} to add it back!"
     #redirect_to income_types_path
-   end
+    end
   end
 
   def income_type_params

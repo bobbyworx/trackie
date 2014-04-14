@@ -39,10 +39,10 @@ def index
 end
 
 def destroy
-    @income = Income.find(params[:id])
-    @income.destroy
-    flash[:notice] = "Income #{@income.amount.to_s} is deleted! Press #{undo_link} to add it back!"
-    redirect_to incomes_path
+    @expense = Expense.find(params[:id])
+    @expense.destroy
+    flash[:notice] = "Income #{@expense.amount.to_s} is deleted! Press #{undo_link} to add it back!"
+    redirect_to expenses_path
 end
 
 private
@@ -53,10 +53,6 @@ end
 
 def undo_link
   undo_link = view_context.link_to("undo", revert_version_path(@expense.versions.scoped.last, :method => :post))
-end
-
-def total_expense
-  Expense.where("created_at BETWEEN ? AND ?", DateTime.now.beginning_of_month, DateTime.now).sum(:amount)
 end
 
 end

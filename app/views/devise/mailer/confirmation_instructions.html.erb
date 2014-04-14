@@ -1,5 +1,7 @@
-<p>Welcome <%= @email %>!</p>
+<p>Hello <%= @username %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>Please click on the following link to activate your account! </p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+<p><%= link_to 'Activate account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+<p>Thank you, </br> 
+Trackie Team! </p>
