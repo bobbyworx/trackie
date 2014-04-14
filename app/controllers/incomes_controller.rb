@@ -57,6 +57,10 @@ def resource_params
   params.require(:income).permit(:income_type_id, :amount, :note)
 end
 
+def undo_link
+  undo_link = view_context.link_to("undo", revert_version_path(@income.versions.scoped.last, :method => :post))
+end
+
 end
 
 
