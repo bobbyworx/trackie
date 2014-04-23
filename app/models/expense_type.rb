@@ -8,14 +8,13 @@ class ExpenseType < ActiveRecord::Base
   belongs_to :parent_expense_type, :class_name => "ExpenseType"
 
   def name_different_from_parent
-    if self.id == self.parent_expense_type_id
+    if self.name == self.parent_expense_type.try(:name)
       errors.add(:expense_type, "name has to be different from parent's name!")
     end
   end
 
   def extended
-  self.child_expense_types.to_a << self
-  #[self] << self.child_income_types.to_a
+    self.child_expense_types.to_a << self
   end
 
 end
