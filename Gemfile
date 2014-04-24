@@ -8,6 +8,7 @@ gem 'paper_trail', github: 'airblade/paper_trail'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 gem 'devise', "~> 3.0.3"
+gem 'devise_invitable'
 gem 'devise_security_extension'
 gem 'rails_email_validator'
 

@@ -57,18 +57,21 @@ navigation.autogenerate_item_ids = false
     #                            when the item should be highlighted, you can set a regexp which is matched
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>.
     #
-    primary.dom_class = "nav nav-pills nav-justified"
-    primary.item :income, 'Incomes', incomes_path
-    primary.item :expense, 'Expenses', expenses_path
-    primary.item :report, 'Reports', "#"
+    
 
     # Add an item which has a sub navigation (same params, but with block)
-    primary.item :manage, 'Manage', "#" do |sub_nav|
-      sub_nav.item :income_type, 'Income Types', income_types_path
-      sub_nav.item :expense_type, 'Expense Types', expense_types_path
-    end
 
-    if current_user   
+    if current_user
+      primary.dom_class = "nav nav-pills nav-justified"
+      primary.item :income, 'Incomes', incomes_path
+      primary.item :expense, 'Expenses', expenses_path
+      primary.item :report, 'Reports', "#"
+
+      primary.item :manage, 'Manage', "#" do |sub_nav|
+        sub_nav.item :income_type, 'Income Types', income_types_path
+        sub_nav.item :expense_type, 'Expense Types', expense_types_path
+      end   
+      
       primary.item :user, "@#{current_user.username}", "#" do |sub_nav|
           sub_nav.item :user, 'Logout', destroy_user_session_path
           sub_nav.item :user, 'Change your password' , edit_user_registration_path
