@@ -10,4 +10,10 @@ class User < ActiveRecord::Base
   has_many :income_types
   has_many :expense_types
 
-  end
+  has_many :invitations, :class_name => self.to_s, :as => :invited_by
+
+def invitations_remaining
+  invitation_limit - invitations.count
+end
+
+end

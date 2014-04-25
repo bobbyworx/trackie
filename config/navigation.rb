@@ -78,7 +78,7 @@ navigation.autogenerate_item_ids = false
           sub_nav.item :user, 'Change your password' , edit_user_registration_path
       end
       
-      primary.item :user, 'Invite a friend!', new_user_invitation_path      
+      primary.item :user, "Invite a friend! (#{current_user.invitations_remaining} invitations left)", new_user_invitation_path      
     end
 
     # You can also specify a condition-proc that needs to be fullfilled to display an item.

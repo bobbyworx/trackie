@@ -1,8 +1,9 @@
 class IncomeTypesController < ApplicationController
-
-respond_to :html, :js
+  respond_to :html, :js
+  
   helper_method :nil_parent_income_type
   helper_method :income_type_params
+  
   def new
     @income_type = IncomeType.new
   end
@@ -21,9 +22,6 @@ respond_to :html, :js
   def index
     @income_types = IncomeType.page(params[:page]).per(5).order('created_at DESC')#paginate :per_page => 5, :page => params[:page]
   end
-
-  #def show
-  #end
 
   def edit
     income_type
