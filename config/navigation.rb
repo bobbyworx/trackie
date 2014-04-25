@@ -70,12 +70,15 @@ navigation.autogenerate_item_ids = false
       primary.item :manage, 'Manage', "#" do |sub_nav|
         sub_nav.item :income_type, 'Income Types', income_types_path
         sub_nav.item :expense_type, 'Expense Types', expense_types_path
-      end   
-      
+      end
+
+
       primary.item :user, "@#{current_user.username}", "#" do |sub_nav|
           sub_nav.item :user, 'Logout', destroy_user_session_path
           sub_nav.item :user, 'Change your password' , edit_user_registration_path
       end
+      
+      primary.item :user, 'Invite a friend!', new_user_invitation_path      
     end
 
     # You can also specify a condition-proc that needs to be fullfilled to display an item.

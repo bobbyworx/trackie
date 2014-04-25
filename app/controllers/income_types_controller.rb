@@ -9,6 +9,7 @@ respond_to :html, :js
   
   def create
     @income_type = IncomeType.new(income_type_params)
+    @income_type.user_id = current_user.id
     if @income_type.save
       flash[:notice] = "Income Type #{income_type.name} was successfully created!"
       redirect_to action: 'index' 
@@ -50,7 +51,7 @@ respond_to :html, :js
   end
 
   def income_type_params
-    params.require(:income_type).permit(:name, :parent_income_type_id)
+    params.require(:income_type).permit(:user_id, :name, :parent_income_type_id)
   end
 
   def income_type

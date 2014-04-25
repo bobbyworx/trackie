@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :secure_validatable, :confirmable
 
   validates :username, length: { minimum: 4, :message => "The username should have more than 4 characters"}
+
+  has_many :income_types
+  has_many :expense_types
+
   end

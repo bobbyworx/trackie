@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140423141522) do
+ActiveRecord::Schema.define(version: 20140425123956) do
 
   create_table "expense_types", force: true do |t|
     t.string   "name"
     t.integer  "parent_expense_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "expense_types", ["parent_expense_type_id"], name: "index_expense_types_on_parent_expense_type_id"
@@ -37,6 +38,7 @@ ActiveRecord::Schema.define(version: 20140423141522) do
     t.integer  "parent_income_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "income_types", ["parent_income_type_id"], name: "index_income_types_on_parent_income_type_id"

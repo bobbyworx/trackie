@@ -6,6 +6,7 @@ class ExpenseTypesController < ApplicationController
 
   def create
     @expense_type = ExpenseType.new(expense_type_params)
+    @expense_type.user_id = current_user.id
     if @expense_type.save
       flash[:notice] = "You have successfully created an expense type!"
       redirect_to action: 'index' 
@@ -45,7 +46,7 @@ class ExpenseTypesController < ApplicationController
 private
 
   def expense_type_params
-    params.require(:expense_type).permit(:name, :parent_expense_type_id)
+    params.require(:expense_type).permit(:user_id, :name, :parent_expense_type_id)
   end
 
   def expense_type

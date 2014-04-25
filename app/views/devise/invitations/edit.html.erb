@@ -4,8 +4,9 @@
   <%= devise_error_messages! %>
   <%= f.hidden_field :invitation_token %>
 
+  <%= f.input :username %>
   <%= f.input :password %>
   <%= f.input :password_confirmation %>
 
-  <%= f.submit t("devise.invitations.edit.submit_button") %>
+  <%= f.button :submit, "Set my password", :class => 'btn btn-primary' %>
 <% end %>

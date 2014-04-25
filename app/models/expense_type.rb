@@ -6,6 +6,7 @@ class ExpenseType < ActiveRecord::Base
   has_many :child_expense_types, :class_name => "ExpenseType",
                   :foreign_key => "parent_expense_type_id", dependent: :delete_all
   belongs_to :parent_expense_type, :class_name => "ExpenseType"
+  belongs_to :user
 
   def name_different_from_parent
     if self.name == self.parent_expense_type.try(:name)
