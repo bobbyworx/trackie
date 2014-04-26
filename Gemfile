@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
 gem 'paper_trail', github: 'airblade/paper_trail'
 
@@ -9,6 +10,7 @@ gem 'paper_trail', github: 'airblade/paper_trail'
 gem 'sqlite3'
 gem 'devise', "~> 3.0.3"
 gem 'devise_invitable'
+gem 'omniauth-facebook'
 gem 'devise_security_extension'
 gem 'rails_email_validator'
 

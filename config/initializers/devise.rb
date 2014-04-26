@@ -1,9 +1,12 @@
+require "omniauth-facebook"
 # Use this hook to configure devise mailer, warden hooks and so forth. The first
 # four configuration values can also be set straight in your models.
 Devise.setup do |config|
   # Configure the e-mail address which will be shown in DeviseMailer.
   config.mailer_sender = "please-change-me@config-initializers-devise.com"
+  {provider_ignores_state: true}
 
+  #config.omniauth :facebook, ENV["635428813194564"], ENV['4aede6b16b81c02d95b213016ca9875b'],{provider_ignores_state: true}
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating an user. By default is
   # just :email. You can configure it to use [:username, :subdomain], so for
@@ -11,6 +14,7 @@ Devise.setup do |config|
   # parameters are used only when authenticating and not when retrieving from
   # session. If you need permissions, you should implement that in a before filter.
   config.authentication_keys = [ :username ]
+  config.omniauth :facebook, "635428813194564", "4aede6b16b81c02d95b213016ca9875b"
 
   # Tell if authentication through request.params is enabled. True by default.
   # config.params_authenticatable = true

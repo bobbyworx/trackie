@@ -13,5 +13,9 @@ class ApplicationController < ActionController::Base
   def total_income
     Income.where("created_at BETWEEN ? AND ?", DateTime.now.beginning_of_month, DateTime.now).sum(:amount)
   end
+
+  #def after_sign_in_path_for(resource)
+    #request.env['omniauth.origin'] || root_url
+  #end
   
 end
