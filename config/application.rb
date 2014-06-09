@@ -1,4 +1,5 @@
 require File.expand_path('../boot', __FILE__)
+#i18n.enforce_available_locales = false
 
 require 'rails/all'
 # Require the gems listed in Gemfile, including any gems

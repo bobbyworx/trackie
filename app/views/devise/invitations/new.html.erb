@@ -1,6 +1,6 @@
 <h2><%= t "devise.invitations.new.header" %></h2>
 <div class="well well-sm">
-    <%= "You have #{current_user.invitations_remaining} invitations left." %>
+    <%= "You have #{current_user.invitation_limit} invitations left." %>
 </div>
 <%= simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
   <%= devise_error_messages! %>

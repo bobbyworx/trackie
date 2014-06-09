@@ -13,19 +13,23 @@ class User < ActiveRecord::Base
 
   has_many :invitations, :class_name => self.to_s, :as => :invited_by
 
-def invitations_remaining
-  invitation_limit - invitations.count
-end
-
-def self.find_for_facebook_oauth(auth)
-  where(auth.slice(:provider, :uid)).first_or_create do |user|
-    user.provider = auth.provider
-    user.uid = auth.uid
-    user.email = auth.info.email
-    user.password = Devise.friendly_token[0,20]
-    user.username = auth.info.name   # assuming the user model has a name
-    #user.image = auth.info.image # assuming the user model has an image
+  def accepted_or_not_invited?
+    invitation_accepted? || !invited_to_sign_up?
   end
-end
+
+  def invitation_accepted?
+    invitation_accepted_at.present?
+  end 
+
+  def self.find_for_facebook_oauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_create do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      #user.username = auth.info.name   # assuming the user model has a name
+      #user.image = auth.info.image # assuming the user model has an image
+    end
+  end
 
 end

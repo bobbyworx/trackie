@@ -2,8 +2,8 @@
 
 # Configures your navigation
 SimpleNavigation::Configuration.run do |navigation|
-navigation.renderer = SimpleNavigation::Renderer::Bootstrap
-navigation.autogenerate_item_ids = false
+  navigation.renderer = SimpleNavigation::Renderer::Bootstrap
+  navigation.autogenerate_item_ids = false
 
   # Specify a custom renderer if needed.
   # The default renderer is SimpleNavigation::Renderer::List which renders HTML lists.
@@ -75,10 +75,10 @@ navigation.autogenerate_item_ids = false
 
       primary.item :user, "@#{current_user.username}", "#" do |sub_nav|
           sub_nav.item :user, 'Logout', destroy_user_session_path
-          sub_nav.item :user, 'Change your password' , edit_user_registration_path
+          sub_nav.item :user, 'Edit your profile' , edit_user_registration_path
       end
       
-      primary.item :user, "Invite a friend! (#{current_user.invitations_remaining} invitations left)", new_user_invitation_path      
+      primary.item :user, "Invite a friend! (#{current_user.invitation_limit} invitations left)", new_user_invitation_path      
     end
 
     # You can also specify a condition-proc that needs to be fullfilled to display an item.

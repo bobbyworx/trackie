@@ -1,29 +1,38 @@
 <div class="page-header">
-    <h1> Welcome to Trackie, <%= link_to "#{current_user.username}", edit_user_registration_path %></span></h1>
+    <h1> Welcome to Trackie, <%= link_to "#{current_user.username}", edit_user_registration_path %>!</span></h1>
 </div></br></br>
 
 <h2>
 <p><%= "What do you want to do today?" %></br></br>
-<% if Income.last.present? %>
- Your last added income is: <span style="color:green"> 
-     <%= "#{Income.last.try(:amount)} RON " %> </span> in 
-     <%= "#{Income.last.try(:income_type).try(:name)}" %>
+  <% if IncomeType.nil? %>
+    You have to add an income type first. Click <%= link_to "here", new_income_type_path %> to add a new one. </br></br>
+  <% else %>
+    <% if Income.last.present? %>
+      Your last added income is: <span style="color:green"> 
+        <%= "#{Income.last.try(:amount)} RON " %> </span> in 
+        <%= "#{Income.last.try(:income_type).try(:name)}" %>
         <%= link_to "add new", new_income_path %> Income </br></br>
-<% else %>
-    You don't have any incomes added yet. You can
-  <%= link_to "add new", new_income_path %> Incomes now. </br></br>
-<% end %>
+    <% else %>
+      You don't have any incomes added yet. You can
+      <%= link_to "add new", new_income_path %> Incomes now. </br></br>
+    <% end %>
+  <% end %>
 
-<% if Expense.last.present? %>
-  Your last added expense is: <span style="color:red"> <%= "#{Expense.last.try(:amount)} RON " %></span> in 
-  <%= "#{Expense.last.try(:expense_type).try(:name)}" %> -
-  <%= link_to "add new", new_expense_path %> Expese </br></br>
-<% else %>
-  You don't have any expenses added yet. You can
-  <%= link_to "add new", new_expense_path %> Expenses now. </br></br>
-<% end %>
+  <% if ExpenseType.nil? %>
+    You have to add an expense type first. Click <%= link_to "here", new_expense_type_path %> to add a new one. </br></br>
+  <% else %>
+    <% if Expense.last.present? %>
+      Your last added expense is: <span style="color:red"> <%= "#{Expense.last.try(:amount)} RON " %></span> in 
+      <%= "#{Expense.last.try(:expense_type).try(:name)}" %> -
+      <%= link_to "add new", new_expense_path %> Expese </br></br>
+    <% else %>
+      You don't have any expenses added yet. You can
+      <%= link_to "add new", new_expense_path %> Expenses now. </br></br>
+    <% end %>
+  <% end %>
 
-  Your balance for this month is: <span style="color:green"> 
-  <%= "#{balance}" %> RON.</span>
-  <%= link_to "See", "#" %> detailed information about your month so far.</span></p>
+    Your balance for this month is: <span style="color:green"> 
+      <%= "#{balance}" %> RON.</span>
+      <%= link_to "See", "#" %> detailed information about your month so far.</span></p>
+      <%= "#{see_if_users_accepted_invitation}" %>
 </h2>
